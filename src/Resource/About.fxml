@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AboutController">
+   <top>
+      <Pane prefHeight="60.0" prefWidth="270.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="58.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="save.me FTP" wrappingWidth="153.85546875">
+               <font>
+                  <Font name="Lucida Sans Regular" size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <VBox prefHeight="100.0" prefWidth="270.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="115.0" prefWidth="270.0">
+               <children>
+                  <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="save.me FTP Client by Ariel Simulevski" wrappingWidth="204.693359375" />
+                  <Text layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by Filezilla" />
+                  <Text layoutX="14.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distribution under CCL 2" />
+                  <Text layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copyright 2015 - 2018" />
+                  <Button fx:id="close" layoutX="119.0" layoutY="95.0" mnemonicParsing="false" onAction="#close" text="OK" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

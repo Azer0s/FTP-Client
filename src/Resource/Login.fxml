@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.LoginController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Pane prefHeight="20.0" prefWidth="200.0" />
+      <Pane prefHeight="35.0" prefWidth="300.0">
+         <children>
+            <Text fill="#0218c3" fontSmoothingType="LCD" layoutX="83.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Server-Address">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="address" layoutX="65.0" layoutY="9.0" prefHeight="25.0" prefWidth="170.0" />
+         </children>
+      </Pane>
+      <Pane prefHeight="20.0" prefWidth="300.0">
+         <children>
+            <Separator layoutX="25.0" layoutY="8.0" prefHeight="5.0" prefWidth="250.0" />
+         </children>
+      </Pane>
+      <Pane prefHeight="50.0" prefWidth="300.0">
+         <children>
+            <Text fill="#0218c3" fontSmoothingType="LCD" layoutX="106.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="username" layoutX="65.0" layoutY="8.0" prefHeight="25.0" prefWidth="170.0" />
+         </children>
+      </Pane>
+      <Pane prefHeight="20.0" prefWidth="300.0">
+         <children>
+            <Separator layoutX="25.0" layoutY="8.0" prefHeight="5.0" prefWidth="250.0" />
+         </children>
+      </Pane>
+      <Pane prefHeight="50.0" prefWidth="300.0">
+         <children>
+            <Text fill="#0218c3" fontSmoothingType="LCD" layoutX="108.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <PasswordField fx:id="password" layoutX="65.0" layoutY="8.0" prefHeight="25.0" prefWidth="170.0" />
+         </children>
+      </Pane>
+      <Pane prefHeight="20.0" prefWidth="300.0">
+         <children>
+            <Separator layoutX="25.0" layoutY="8.0" prefHeight="5.0" prefWidth="250.0" />
+         </children>
+      </Pane>
+      <Pane prefHeight="80.0" prefWidth="300.0">
+         <children>
+            <Button fx:id="loginBTN" layoutX="83.0" layoutY="18.0" mnemonicParsing="false" onAction="#login" prefHeight="44.0" prefWidth="134.0" text="Login">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane prefHeight="20.0" prefWidth="300.0">
+         <children>
+            <Text fx:id="status" layoutY="9.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="170.0" />
+         </children>
+      </Pane>
+   </children>
+</VBox>
