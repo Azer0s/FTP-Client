@@ -1,8 +1,11 @@
 package Client;
 
+import UI.UIMsg;
+import javafx.stage.Stage;
 import org.apache.commons.net.ftp.*;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,6 +20,7 @@ public class FTPAccessClient extends Thread{
     private final String SERVER_ADDRESS;
     private final String USERNAME;
     private final String PASSWORD;
+    public String msg;
 
     public FTPAccessClient(String serverAddress, String username, String password){
         ftp = new FTPClient();
@@ -35,7 +39,10 @@ public class FTPAccessClient extends Thread{
             int reply;
             ftp.connect(SERVER_ADDRESS);
             System.out.println("Connected to " + SERVER_ADDRESS + "!");
-            System.out.println(ftp.getReplyString());
+            String replyString = ftp.getReplyString();
+            System.out.println(replyString);
+
+            this.msg = replyString;
 
             reply = ftp.getReplyCode();
 
@@ -51,7 +58,7 @@ public class FTPAccessClient extends Thread{
     }
 
     public String login(){
-        if (!PASSWORD.equals("") && !USERNAME.equals("")){
+        if (!USERNAME.equals("")){
             boolean succes = false;
             try {
                 succes = ftp.login(USERNAME, PASSWORD);
@@ -59,9 +66,7 @@ public class FTPAccessClient extends Thread{
             if (succes){
                 return "true";
             }
-        }
-
-        if (USERNAME.equals("")){
+        }else {
             return "na";
         }
 
@@ -131,5 +136,16 @@ public class FTPAccessClient extends Thread{
 
     public String getSERVER_ADDRESS(){
         return SERVER_ADDRESS;
+    }
+
+    public boolean fileExists(String fn) throws IOException {
+        InputStream inputStream = ftp.retrieveFileStream(fn);
+        int returnCode = ftp.getReplyCode();
+
+        if (inputStream == null || returnCode == 550){
+            return false;
+        }
+
+        return true;
     }
 }

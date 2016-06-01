@@ -8,6 +8,7 @@ import javafx.scene.text.Text;
 import javafx.stage.*;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 
 /**
@@ -39,13 +40,18 @@ public class MainController {
         list.setItems(FXCollections.observableList(ftpAccessClient.getFS()));
         console.setText(UIMain.getInstance().getMsg());
         System.out.println(list.getItems().toString());
+
+        UIMsg uiMsg = new UIMsg(ftpAccessClient.msg);
+        try {
+            uiMsg.start(new Stage());
+        } catch (Exception e) {
+        }
     }
 
     public void init(){
         ftpAccessClient = UIMain.getInstance().getFtpAccessClient();
         list.setItems(FXCollections.observableList(ftpAccessClient.getFS()));
         System.out.println(list.getItems().toString());
-        console.setText("");
     }
 
     public void download(){
@@ -73,6 +79,13 @@ public class MainController {
 
         boolean deleted = ftpAccessClient.delete(selected);
         if (deleted) {
+            try {
+                if(ftpAccessClient.fileExists(selected)){
+                    console.setText("Could not delete the file.");
+                    return;
+                }
+            } catch (IOException e) {
+            }
             console.setText("The file was deleted successfully.");
             init();
         } else {

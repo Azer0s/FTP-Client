@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="236.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MsgController">
+   <top>
+      <Pane prefHeight="60.0" prefWidth="270.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="58.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="save.me FTP" wrappingWidth="153.85546875">
+               <font>
+                  <Font name="Lucida Sans Regular" size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <VBox prefHeight="100.0" prefWidth="270.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextArea fx:id="msg" editable="false" prefHeight="138.0" prefWidth="270.0" />
+            <Pane prefHeight="33.0" prefWidth="270.0">
+               <children>
+                  <Button layoutX="115.0" layoutY="4.0" mnemonicParsing="false" onAction="#close" text="OK" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

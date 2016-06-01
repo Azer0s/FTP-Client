@@ -44,6 +44,15 @@ public class Upload extends Thread {
                 mainController.console.setText("Upload failed!");
             }
         }
+
+        try {
+            if (!ftpAccessClient.fileExists(store.getName())){
+                mainController.console.setText("Upload failed!");
+                return;
+            }
+        } catch (IOException e) {
+        }
+
         mainController.console.setText("Upload succesful!");
         mainController.init();
     }
