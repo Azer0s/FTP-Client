@@ -37,7 +37,14 @@ public class MainController {
     protected void initialize(){
         ftpAccessClient = UIMain.getInstance().getFtpAccessClient();
         list.setItems(FXCollections.observableList(ftpAccessClient.getFS()));
+        console.setText(UIMain.getInstance().getMsg());
         System.out.println(list.getItems().toString());
+    }
+
+    public void init(){
+        ftpAccessClient = UIMain.getInstance().getFtpAccessClient();
+        list.setItems(FXCollections.observableList(ftpAccessClient.getFS()));
+                System.out.println(list.getItems().toString());
     }
 
     public void download(){
@@ -53,7 +60,7 @@ public class MainController {
         String path = selectedDirectory.getPath() + "/" + selected;
         path = path.replace("\\", "/");
 
-        Download dl = new Download(selected, ftpAccessClient, path);
+        Download dl = new Download(selected, ftpAccessClient, path, this);
         dl.start();
     }
 
@@ -66,7 +73,7 @@ public class MainController {
         boolean deleted = ftpAccessClient.delete(selected);
         if (deleted) {
             console.setText("The file was deleted successfully.");
-            initialize();
+            init();
         } else {
             console.setText("Could not delete the file.");
         }
@@ -78,7 +85,7 @@ public class MainController {
 
         String path = file.getAbsolutePath().replace("\\", "/");
 
-        Upload upload = new Upload(ftpAccessClient, path,file);
+        Upload upload = new Upload(ftpAccessClient, path,file, this);
         upload.start();
     }
 }

@@ -15,10 +15,12 @@ public class UIMain extends Application{
 
     private static UIMain instance;
     private FTPAccessClient ftpAccessClient;
+    private String msg;
 
-    public UIMain(FTPAccessClient ftpAccessClient){
+    public UIMain(FTPAccessClient ftpAccessClient, String msg){
         this.ftpAccessClient = ftpAccessClient;
         instance = this;
+        this.msg = msg;
     }
 
     @Override
@@ -39,5 +41,9 @@ public class UIMain extends Application{
 
     public FTPAccessClient getFtpAccessClient(){
         return ftpAccessClient;
+    }
+
+    public String getMsg(){
+        return msg;
     }
 }

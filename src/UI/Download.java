@@ -13,11 +13,13 @@ public class Download extends Thread {
     private final String FILE;
     private FTPAccessClient ftpAccessClient;
     private final String PATH;
+    private MainController mainController;
 
-    public Download(String file, FTPAccessClient ftpAccessClient, String path){
+    public Download(String file, FTPAccessClient ftpAccessClient, String path, MainController mainController){
         this.FILE = file;
         this.ftpAccessClient = ftpAccessClient;
         this.PATH = path;
+        this.mainController = mainController;
     }
 
     public void run(){
@@ -25,19 +27,22 @@ public class Download extends Thread {
         try {
             fos = new FileOutputStream(PATH);
         } catch (FileNotFoundException e) {
+            mainController.console.setText("Download failed!");
         }
 
         try {
             ftpAccessClient.getFtp().retrieveFile(FILE, fos);
         } catch (IOException e) {
+            mainController.console.setText("Download failed!");
         }finally {
             try {
                 if (fos != null){
                     fos.close();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                mainController.console.setText("Download failed!");
             }
         }
+        mainController.console.setText("Download succesful!");
     }
 }

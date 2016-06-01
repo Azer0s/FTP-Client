@@ -33,7 +33,7 @@
             <Button mnemonicParsing="false" onAction="#upload" text="Upload" />
             <Button mnemonicParsing="false" onAction="#initialize" text="Reload" />
             <Button mnemonicParsing="false" onAction="#delete" text="Delete" />
-            <Text fx:id="console" fill="#515151" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="339.0">
+            <Text fx:id="console" fill="#515151" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="270.0">
                <font>
                   <Font size="18.0" />
                </font>

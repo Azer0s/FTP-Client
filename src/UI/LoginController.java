@@ -45,7 +45,7 @@ public class LoginController {
 
                 Stage stage = (Stage) loginBTN.getScene().getWindow();
                 stage.close();
-                UIMain uiMain = new UIMain(ftpAccessClient);
+                UIMain uiMain = new UIMain(ftpAccessClient,ftpAccessClient.loginText(answer));
                 try {
                     uiMain.start(new Stage());
                 } catch (Exception e) {}
