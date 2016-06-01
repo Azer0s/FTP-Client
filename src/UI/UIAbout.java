@@ -22,4 +22,6 @@ public class UIAbout extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
     }
+
+    //TODO Documentation
 }

@@ -44,4 +44,6 @@ public class UILogin extends Application {
     public static UILogin getInstance(){
         return instance;
     }
+
+    //TODO Documentation
 }

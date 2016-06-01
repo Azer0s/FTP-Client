@@ -1,3 +1,5 @@
+package Main;
+
 import UI.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -15,4 +17,6 @@ public class Main extends Application{
         UILogin uiLogin = new UILogin();
         uiLogin.start(primaryStage);
     }
+
+    //TODO Documentation
 }

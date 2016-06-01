@@ -6,15 +6,28 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * Created by ariel on 01.06.2016.
+ * Thread to download a file from the server to a directory on the computer.
+ * @author ariel
  */
 public class Download extends Thread {
 
     private final String FILE;
-    private FTPAccessClient ftpAccessClient;
     private final String PATH;
+    private FTPAccessClient ftpAccessClient;
     private MainController mainController;
 
+    /**
+     *
+     * Initializes Download Object.
+     * <p>
+     * The file argument has to be a file which exists on the server.
+     * Path has to be a writeable directory for the current user.
+     *
+     * @param file              File to download
+     * @param ftpAccessClient   A reference to the FTP client
+     * @param path              Path where file is saved to
+     * @param mainController    Reference to mainController/main window
+     */
     public Download(String file, FTPAccessClient ftpAccessClient, String path, MainController mainController){
         this.FILE = file;
         this.ftpAccessClient = ftpAccessClient;
@@ -22,6 +35,13 @@ public class Download extends Thread {
         this.mainController = mainController;
     }
 
+    /**
+     *
+     * Starts the download in a new thread.
+     * <p>
+     * Downloads and saves file to given path.
+     * If something goes wrong, method prints an error message on the console textfield.
+     */
     public void run(){
         FileOutputStream fos = null;
         try {

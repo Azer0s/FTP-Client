@@ -8,15 +8,26 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- * Created by ariel on 01.06.2016.
+ * Thread to upload a file from the computer to the working directory of the server.
+ * @author ariel
  */
 public class Upload extends Thread {
 
-    private FTPAccessClient ftpAccessClient;
     private final String PATH;
-    private File store;
+    private FTPAccessClient ftpAccessClient;
     private MainController mainController;
+    private File store;
 
+    /**
+     * Initializes Upload Object.
+     * <p>
+     * Store has to be a valid {@link File} and has to be accessable to the current user.
+     *
+     * @param ftpAccessClient   A reference to the FTP client
+     * @param path              Absolute path of the file you want to upload
+     * @param store             File to upload
+     * @param mainController    Reference to mainController/main window
+     */
     public Upload(FTPAccessClient ftpAccessClient, String path, File store, MainController mainController){
         this.ftpAccessClient = ftpAccessClient;
         this.PATH = path;
@@ -24,6 +35,13 @@ public class Upload extends Thread {
         this.mainController = mainController;
     }
 
+    /**
+     *
+     * Starts the upload in a new thread.
+     * <p>
+     * Reads and uploads file to working directory on server.
+     * If something goes wrong, method prints an error message on the console textfield.
+     */
     public void run(){
         FileInputStream fis = null;
         try {

@@ -1,7 +1,5 @@
 package Client;
 
-import UI.UIMsg;
-import javafx.stage.Stage;
 import org.apache.commons.net.ftp.*;
 
 import java.io.IOException;
@@ -11,7 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- * Created by ariel on 31.05.2016.
+ * Class which connects to the FTP server via the apache commons.
+ * @author ariel
  */
 public class FTPAccessClient extends Thread{
 
@@ -21,6 +20,17 @@ public class FTPAccessClient extends Thread{
     private final String PASSWORD;
     public String msg;
 
+
+    /**
+     * Initializes FTPAccessClient Object.
+     * <p>
+     * The server-address has to either be a domain or a direct IP.
+     * Username and Password aren´t always needed
+     *
+     * @param serverAddress     Address of the FTP server to connect to
+     * @param username          Username (not always used)
+     * @param password          Password (not always used)
+     */
     public FTPAccessClient(String serverAddress, String username, String password){
         ftp = new FTPClient();
         FTPClientConfig config = new FTPClientConfig();
@@ -31,6 +41,12 @@ public class FTPAccessClient extends Thread{
         this.PASSWORD = password;
     }
 
+    /**
+     * Tries to connect to the server.
+     * <p>
+     * Returns false if connection is succesful and true if there was an error.
+     * @return boolean
+     */
     public boolean connect(){
         boolean error = false;
 
@@ -48,7 +64,7 @@ public class FTPAccessClient extends Thread{
             if(!FTPReply.isPositiveCompletion(reply)) {
                 ftp.disconnect();
                 System.err.println("FTP server refused connection.");
-                System.exit(1);
+                error = true;
             }
         }catch (Exception e){
             error = true;
@@ -56,6 +72,14 @@ public class FTPAccessClient extends Thread{
         return error;
     }
 
+    /**
+     * Tries to log in.
+     * <p>
+     * Tries to log into the server with credentials specified in the constructor.
+     * Returns "true" if the log in was succesful, "false" if the log in was rejected
+     * and "na" if the credentials aren´t specified.
+     * @return String
+     */
     public String login(){
         if (!USERNAME.equals("")){
             boolean succes = false;
@@ -75,6 +99,12 @@ public class FTPAccessClient extends Thread{
         return "false";
     }
 
+    /**
+     * Returns a message according to the input.
+     *
+     * @param text  Input is the output from login()
+     * @return String
+     */
     public String loginText(String text){
         switch (text){
             case "true":
@@ -87,6 +117,11 @@ public class FTPAccessClient extends Thread{
         return null;
     }
 
+    /**
+     * Gets all available files on the root of the server and returns them as a FTPFile array.
+     *
+     * @return FTPFile
+     */
     public FTPFile[] getFTPFile(){
         try {
             return ftp.listFiles();
@@ -95,15 +130,13 @@ public class FTPAccessClient extends Thread{
         return new FTPFile[0];
     }
 
-    public FTPFile[] getFilesFromDirectory(String dir){
-        try {
-            return ftp.listFiles(dir);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return new FTPFile[0];
-    }
-
+    /**
+     * Outputs filenames as ArrayList
+     * <p>
+     * Gets FTPFile array from getFTPFile(), gets filenames from said array and puts it into the ArrayList.
+     *
+     * @return ArrayList<String>
+     */
     public ArrayList<String> getFS(){
         ArrayList<String> filesAsString = new ArrayList<>();
 
@@ -120,6 +153,15 @@ public class FTPAccessClient extends Thread{
         return filesAsString;
     }
 
+    /**
+     * Deletes a file on the server
+     * <p>
+     * Tries to delete the specified file on the server. Returns true if it was succesful,
+     * false if it wasn´t.
+     *
+     * @param fileToDelete  File you want to delete on the server
+     * @return boolean
+     */
     public boolean delete(String fileToDelete) {
         try {
             ftp.deleteFile(fileToDelete);
@@ -129,14 +171,35 @@ public class FTPAccessClient extends Thread{
         }
     }
 
+    /**
+     * Returns FTPClient object from Apache commons library
+     *
+     * @return FTPClient
+     */
     public FTPClient getFtp() {
         return ftp;
     }
 
+    /**
+     * Returns the server address of the server, the client is connected to.
+     *
+     * @return String
+     */
     public String getSERVER_ADDRESS(){
         return SERVER_ADDRESS;
     }
 
+    /**
+     * Checks if a file exists
+     * <p>
+     * Tries to open an InputStream to the specified file. Return false if InputStream
+     * fails or if the server sends an error code (-> file doesn´t exist).
+     * Returns true if the method could initialize InputStream (-> file does exist).
+     *
+     * @param fn            Filename on the server
+     * @return              boolean
+     * @throws IOException  If file wasn´t found
+     */
     public boolean fileExists(String fn) throws IOException {
         InputStream inputStream = ftp.retrieveFileStream(fn);
         int returnCode = ftp.getReplyCode();

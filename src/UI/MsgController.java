@@ -37,4 +37,6 @@ public class MsgController {
         Stage stage = (Stage) msg.getScene().getWindow();
         stage.close();
     }
+
+    //TODO Documentation
 }

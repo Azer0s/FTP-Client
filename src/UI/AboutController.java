@@ -15,4 +15,6 @@ public class AboutController {
         Stage stage = (Stage) close.getScene().getWindow();
         stage.close();
     }
+
+    //TODO Documentation
 }

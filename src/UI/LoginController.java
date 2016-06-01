@@ -82,6 +82,7 @@ public class LoginController {
             ftpAccessClient.run();
             if (ftpAccessClient.connect()){
                 status.setText("Connection refused!");
+                return;
             }else {
                 String answer = ftpAccessClient.login();
                 if (answer.equals("false")){
@@ -106,4 +107,5 @@ public class LoginController {
         System.exit(0);
     }
 
+    //TODO Documentation
 }
