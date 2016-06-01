@@ -16,7 +16,6 @@ import java.util.ArrayList;
 public class FTPAccessClient extends Thread{
 
     private FTPClient ftp;
-    private FTPClientConfig config;
     private final String SERVER_ADDRESS;
     private final String USERNAME;
     private final String PASSWORD;
@@ -24,7 +23,7 @@ public class FTPAccessClient extends Thread{
 
     public FTPAccessClient(String serverAddress, String username, String password){
         ftp = new FTPClient();
-        config = new FTPClientConfig();
+        FTPClientConfig config = new FTPClientConfig();
         ftp.configure(config);
 
         this.SERVER_ADDRESS = serverAddress;
