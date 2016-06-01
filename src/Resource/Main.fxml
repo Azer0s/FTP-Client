@@ -13,13 +13,14 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#download" text="Download" />
                   <MenuItem mnemonicParsing="false" onAction="#upload" text="Upload" />
-                  <MenuItem fx:id="initialize" mnemonicParsing="false" text="Reload" />
+                  <MenuItem mnemonicParsing="false" onAction="#init" text="Reload" />
                   <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete" />
                </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+                  <MenuItem mnemonicParsing="false" onAction="#back" text="Back" />
                   <MenuItem mnemonicParsing="false" onAction="#exit" text="Quit" />
             </items>
           </Menu>
@@ -31,7 +32,7 @@
         <items>
           <Button mnemonicParsing="false" onAction="#download" text="Download" />
             <Button mnemonicParsing="false" onAction="#upload" text="Upload" />
-            <Button mnemonicParsing="false" onAction="#initialize" text="Reload" />
+            <Button mnemonicParsing="false" onAction="#init" text="Reload" />
             <Button mnemonicParsing="false" onAction="#delete" text="Delete" />
             <Text fx:id="console" fill="#515151" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="270.0">
                <font>

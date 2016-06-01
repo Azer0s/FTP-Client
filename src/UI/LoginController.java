@@ -28,6 +28,14 @@ public class LoginController {
     @FXML
     Button loginBTN;
 
+    @FXML
+    protected void initialize(){
+        String add = UILogin.getInstance().getServer();
+        if (!(add == null)){
+            address.setText(add);
+        }
+    }
+
     public void login(){
         if (address != null && !address.getText().equals("") && !address.getText().equals(null)){
             FTPAccessClient ftpAccessClient = new FTPAccessClient(address.getText(), username.getText(), password.getText());
@@ -36,12 +44,11 @@ public class LoginController {
                 status.setText("Connection refused!");
             }else {
                 String answer = ftpAccessClient.login();
+                if (answer.equals("false")){
+                    status.setText("Can´t log in!");
+                    return;
+                }
                 status.setText(ftpAccessClient.loginText(answer));
-
-                try {
-                    Thread.sleep(250);
-                } catch (InterruptedException e) {}
-
 
                 Stage stage = (Stage) loginBTN.getScene().getWindow();
                 stage.close();

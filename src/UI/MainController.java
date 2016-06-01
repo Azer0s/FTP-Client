@@ -44,7 +44,8 @@ public class MainController {
     public void init(){
         ftpAccessClient = UIMain.getInstance().getFtpAccessClient();
         list.setItems(FXCollections.observableList(ftpAccessClient.getFS()));
-                System.out.println(list.getItems().toString());
+        System.out.println(list.getItems().toString());
+        console.setText("");
     }
 
     public void download(){
@@ -87,5 +88,15 @@ public class MainController {
 
         Upload upload = new Upload(ftpAccessClient, path,file, this);
         upload.start();
+    }
+
+    public void back(){
+        UILogin uiLogin = new UILogin(ftpAccessClient.getSERVER_ADDRESS());
+        Stage stage = (Stage) console.getScene().getWindow();
+        stage.close();
+        try {
+            uiLogin.start(new Stage());
+        } catch (Exception e) {
+        }
     }
 }

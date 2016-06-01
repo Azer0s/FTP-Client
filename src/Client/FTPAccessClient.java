@@ -131,4 +131,8 @@ public class FTPAccessClient extends Thread{
     public FTPClient getFtp() {
         return ftp;
     }
+
+    public String getSERVER_ADDRESS(){
+        return SERVER_ADDRESS;
+    }
 }

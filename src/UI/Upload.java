@@ -45,5 +45,6 @@ public class Upload extends Thread {
             }
         }
         mainController.console.setText("Upload succesful!");
+        mainController.init();
     }
 }
