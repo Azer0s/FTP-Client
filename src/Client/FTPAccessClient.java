@@ -25,7 +25,7 @@ public class FTPAccessClient extends Thread{
      * Initializes FTPAccessClient Object.
      * <p>
      * The server-address has to either be a domain or a direct IP.
-     * Username and Password aren´t always needed
+     * Username and Password arent always needed
      *
      * @param serverAddress     Address of the FTP server to connect to
      * @param username          Username (not always used)
@@ -77,7 +77,7 @@ public class FTPAccessClient extends Thread{
      * <p>
      * Tries to log into the server with credentials specified in the constructor.
      * Returns "true" if the log in was succesful, "false" if the log in was rejected
-     * and "na" if the credentials aren´t specified.
+     * and "na" if the credentials arent specified.
      * @return String
      */
     public String login(){
@@ -135,7 +135,7 @@ public class FTPAccessClient extends Thread{
      * <p>
      * Gets FTPFile array from getFTPFile(), gets filenames from said array and puts it into the ArrayList.
      *
-     * @return ArrayList<String>
+     * @return ArrayList
      */
     public ArrayList<String> getFS(){
         ArrayList<String> filesAsString = new ArrayList<>();
@@ -157,7 +157,7 @@ public class FTPAccessClient extends Thread{
      * Deletes a file on the server
      * <p>
      * Tries to delete the specified file on the server. Returns true if it was succesful,
-     * false if it wasn´t.
+     * false if it wasnt.
      *
      * @param fileToDelete  File you want to delete on the server
      * @return boolean
@@ -193,12 +193,12 @@ public class FTPAccessClient extends Thread{
      * Checks if a file exists
      * <p>
      * Tries to open an InputStream to the specified file. Return false if InputStream
-     * fails or if the server sends an error code (-> file doesn´t exist).
-     * Returns true if the method could initialize InputStream (-> file does exist).
+     * fails or if the server sends an error code (= file doesnt exist).
+     * Returns true if the method could initialize InputStream (= file does exist).
      *
      * @param fn            Filename on the server
      * @return              boolean
-     * @throws IOException  If file wasn´t found
+     * @throws IOException  If file wasnt found
      */
     public boolean fileExists(String fn) throws IOException {
         InputStream inputStream = ftp.retrieveFileStream(fn);
