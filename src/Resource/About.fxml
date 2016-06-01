@@ -22,9 +22,9 @@
          <children>
             <Pane prefHeight="115.0" prefWidth="270.0">
                <children>
-                  <Text layoutX="16.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="save.me FTP is a simple FTP client" wrappingWidth="238.693359375" />
+                  <Text layoutX="14.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="save.me FTP is a simple FTP client" wrappingWidth="238.693359375" />
                   <Text layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by Apache-commons" />
-                  <Text layoutX="16.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distribution under CCL 2" />
+                  <Text layoutX="14.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distribution under CCL 2" />
                   <Text layoutX="14.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copyright 2015 - 2018" />
                   <Button fx:id="close" layoutX="115.0" layoutY="100.0" mnemonicParsing="false" onAction="#close" text="OK" />
                </children>
