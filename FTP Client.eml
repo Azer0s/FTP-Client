@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/out/test/FTP Client"/>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<levels>
+		<level name="org.apache.ant:ant-commons-net:1.9.7" value="project"/>
+		<level name="org.apache.ftpserver:ftpserver-core:1.0.6" value="project"/>
+	</levels>
+</component>

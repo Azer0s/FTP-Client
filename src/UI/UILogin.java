@@ -25,10 +25,10 @@ public class UILogin extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Pane root = FXMLLoader.load(getClass().getResource("../Resource/Login.fxml"));
+        Pane root = FXMLLoader.load(getClass().getResource("/Resource/Login.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("save.me FTP");
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../Resource/Icon.png")));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Resource/Icon.png")));
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();

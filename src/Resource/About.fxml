@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AboutController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AboutController">
    <top>
       <Pane prefHeight="60.0" prefWidth="270.0" BorderPane.alignment="CENTER">
          <children>
@@ -22,11 +22,11 @@
          <children>
             <Pane prefHeight="115.0" prefWidth="270.0">
                <children>
-                  <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="save.me FTP Client by Ariel Simulevski" wrappingWidth="204.693359375" />
-                  <Text layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by Filezilla" />
-                  <Text layoutX="14.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distribution under CCL 2" />
-                  <Text layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copyright 2015 - 2018" />
-                  <Button fx:id="close" layoutX="119.0" layoutY="95.0" mnemonicParsing="false" onAction="#close" text="OK" />
+                  <Text layoutX="16.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="save.me FTP is a simple FTP client" wrappingWidth="238.693359375" />
+                  <Text layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by Apache-commons" />
+                  <Text layoutX="16.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distribution under CCL 2" />
+                  <Text layoutX="14.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copyright 2015 - 2018" />
+                  <Button fx:id="close" layoutX="115.0" layoutY="100.0" mnemonicParsing="false" onAction="#close" text="OK" />
                </children>
             </Pane>
          </children>

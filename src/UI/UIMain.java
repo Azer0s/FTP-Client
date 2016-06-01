@@ -25,11 +25,11 @@ public class UIMain extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Resource/Main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Resource/Main.fxml"));
         Pane root = fxmlLoader.load();
         Scene scene = new Scene(root);
         primaryStage.setTitle("save.me FTP");
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../Resource/Icon.png")));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Resource/Icon.png")));
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
