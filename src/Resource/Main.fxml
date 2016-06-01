@@ -35,9 +35,9 @@
             <Button mnemonicParsing="false" onAction="#init" text="Reload" />
             <Button mnemonicParsing="false" onAction="#delete" text="Delete" />
             <Text fx:id="console" fill="#515151" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="270.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
+                <font>
+                    <Font size="18.0" />
+                </font>
             </Text>
         </items>
       </ToolBar>

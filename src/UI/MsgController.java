@@ -14,7 +14,23 @@ public class MsgController {
 
     @FXML
     protected void initialize(){
-        msg.setText(UIMsg.getInstance().getMsg());
+        String[] message = UIMsg.getInstance().getMsg().split("\\n");
+        if (message[0].substring(0,3).contains("2")){
+            String[] newMessage = new String [message.length];
+            for (int i = 0; i < message.length; i++){
+                newMessage[i] = message[i].substring(4,message[i].length()-1);
+            }
+
+            String arrayAsString = "";
+
+            for (int i = 0; i < newMessage.length; i++){
+                arrayAsString = arrayAsString + newMessage[i] + "\n";
+            }
+            msg.setText(arrayAsString);
+        }
+        else {
+            msg.setText(UIMsg.getInstance().getMsg());
+        }
     }
 
     public void close(){

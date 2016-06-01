@@ -2,9 +2,13 @@ package UI;
 
 import Client.FTPAccessClient;
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -28,6 +32,12 @@ public class UIMain extends Application{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Resource/Main.fxml"));
         Pane root = fxmlLoader.load();
         Scene scene = new Scene(root);
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+            }
+        });
         primaryStage.setTitle("save.me FTP");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Resource/Icon.png")));
         primaryStage.setScene(scene);

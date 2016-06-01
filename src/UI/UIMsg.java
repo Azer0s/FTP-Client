@@ -28,6 +28,7 @@ public class UIMsg extends Application {
         primaryStage.setTitle("Server-Message");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/Resource/Icon.png")));
         primaryStage.setScene(scene);
+        primaryStage.setAlwaysOnTop(true);
         primaryStage.setResizable(false);
         primaryStage.show();
     }
