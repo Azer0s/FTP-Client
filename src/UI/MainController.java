@@ -41,7 +41,7 @@ public class MainController {
     protected void initialize(){
         ftpAccessClient = UIMain.getInstance().getFtpAccessClient();
         list.setItems(FXCollections.observableList(ftpAccessClient.getFS()));
-        console.setText(UIMain.getInstance().getMsg());
+        console.setText(UIMain.getInstance().getMsg()+ "\t");
         System.out.println(list.getItems().toString());
 
         UIMsg uiMsg = new UIMsg(ftpAccessClient.msg);

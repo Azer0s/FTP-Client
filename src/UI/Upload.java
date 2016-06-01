@@ -29,31 +29,31 @@ public class Upload extends Thread {
         try {
             fis = new FileInputStream(PATH);
         } catch (FileNotFoundException e) {
-            mainController.console.setText("Upload failed!");
+            mainController.console.setText("Upload failed!" + "\t");
         }
         try {
             ftpAccessClient.getFtp().storeFile(store.getName(), fis);
         } catch (IOException e) {
-            mainController.console.setText("Upload failed!");
+            mainController.console.setText("Upload failed!" + "\t");
         }finally {
             try {
                 if (fis != null){
                     fis.close();
                 }
             } catch (IOException e) {
-                mainController.console.setText("Upload failed!");
+                mainController.console.setText("Upload failed!" + "\t");
             }
         }
 
         try {
             if (!ftpAccessClient.fileExists(store.getName())){
-                mainController.console.setText("Upload failed!");
+                mainController.console.setText("Upload failed!" + "\t");
                 return;
             }
         } catch (IOException e) {
         }
 
-        mainController.console.setText("Upload succesful!");
+        mainController.console.setText("Upload succesful!" + "\t");
         mainController.init();
     }
 }

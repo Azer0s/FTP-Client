@@ -27,22 +27,22 @@ public class Download extends Thread {
         try {
             fos = new FileOutputStream(PATH);
         } catch (FileNotFoundException e) {
-            mainController.console.setText("Download failed!");
+            mainController.console.setText("Download failed!" + "\t");
         }
 
         try {
             ftpAccessClient.getFtp().retrieveFile(FILE, fos);
         } catch (IOException e) {
-            mainController.console.setText("Download failed!");
+            mainController.console.setText("Download failed!" + "\t");
         }finally {
             try {
                 if (fos != null){
                     fos.close();
                 }
             } catch (IOException e) {
-                mainController.console.setText("Download failed!");
+                mainController.console.setText("Download failed!" + "\t");
             }
         }
-        mainController.console.setText("Download succesful!");
+        mainController.console.setText("Download succesful!" + "\t");
     }
 }
