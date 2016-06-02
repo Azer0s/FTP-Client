@@ -8,7 +8,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- * A simple frame which outputs the welcome message from the FTP server
+ * Frame which outputs the welcome message from the FTP server
+ *
  * @author Ariel
  */
 public class UIMsg extends Application {

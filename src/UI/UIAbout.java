@@ -8,9 +8,18 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- * Created by ariel on 31.05.2016.
+ * Frame which outputs information about the application
+ *
+ * @author Ariel
  */
 public class UIAbout extends Application {
+
+    /**
+     * Starts the UIAbout GUI
+     *
+     * @param primaryStage  New stage to place about-GUI on
+     * @throws Exception    If something goes wrong creating the object
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Resource/About.fxml"));
@@ -22,6 +31,4 @@ public class UIAbout extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
     }
-
-    //TODO Documentation
 }
