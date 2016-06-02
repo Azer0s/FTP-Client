@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
- * This class is the controller for the about UI.
+ * This is the controller for the about UI.
  *
  * @author Ariel
  */

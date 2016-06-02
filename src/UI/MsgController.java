@@ -5,13 +5,21 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 /**
- * Created by Ariel on 6/1/2016.
+ * This is the controller for the msg UI.
+ *
+ * @author Ariel
  */
 public class MsgController {
 
     @FXML
     TextArea msg;
 
+    /**
+     * Method loads as soon as the FXML file is done loading.
+     * <p>
+     * The method gets the server message from the UIMsg instance
+     * and displays it in the window.
+     */
     @FXML
     protected void initialize(){
         String[] message = UIMsg.getInstance().getMsg().split("\\n");
@@ -33,10 +41,11 @@ public class MsgController {
         }
     }
 
+    /**
+     * Closes the msg window.
+     */
     public void close(){
         Stage stage = (Stage) msg.getScene().getWindow();
         stage.close();
     }
-
-    //TODO Documentation
 }

@@ -15,7 +15,9 @@ import java.io.IOException;
 
 
 /**
- * Created by ariel on 31.05.2016.
+ * This is the controller for the main UI.
+ *
+ * @author Ariel
  */
 public class MainController {
     private FTPAccessClient ftpAccessClient;
@@ -26,10 +28,16 @@ public class MainController {
     @FXML
     Text console;
 
+    /**
+     * Exits the program.
+     */
     public void exit(){
         System.exit(0);
     }
 
+    /**
+     * Opens the about window.
+     */
     public void about(){
         UIAbout uiAbout = new UIAbout();
         try {
@@ -37,6 +45,13 @@ public class MainController {
         } catch (Exception e) {}
     }
 
+    /**
+     * Method loads as soon as the FXML file is done loading.
+     * <p>
+     * The method gets the FTPAccesClient object from the UIMain instance,
+     * gets all files, pastes them into the ListView and creates the server-msg
+     * pop-up.
+     */
     @FXML
     protected void initialize(){
         ftpAccessClient = UIMain.getInstance().getFtpAccessClient();
@@ -51,12 +66,18 @@ public class MainController {
         }
     }
 
+    /**
+     * Method reloads all files in the working directory.
+     */
     public void init(){
         ftpAccessClient = UIMain.getInstance().getFtpAccessClient();
         list.setItems(FXCollections.observableList(ftpAccessClient.getFS()));
         System.out.println(list.getItems().toString());
     }
 
+    /**
+     * Method tells the FTPAccesClient to download the selected file.
+     */
     public void download(){
         String selected;
         FileOutputStream fos = null;
@@ -74,6 +95,9 @@ public class MainController {
         dl.start();
     }
 
+    /**
+     * Method tells the FTPAccesClient to delete the selected file.
+     */
     public void delete(){
         String selected;
         try {
@@ -96,6 +120,10 @@ public class MainController {
         }
     }
 
+    /**
+     * Method tells FTPAccesClient to Upload the file which was
+     * selected through the FileChooser.
+     */
     public void upload(){
         FileChooser directoryChooser = new FileChooser();
         File file = directoryChooser.showOpenDialog(new Stage());
@@ -106,6 +134,9 @@ public class MainController {
         upload.start();
     }
 
+    /**
+     * Goes back to the UILogin window. Closes main ui.
+     */
     public void back(){
         UILogin uiLogin = new UILogin(ftpAccessClient.getSERVER_ADDRESS());
         Stage stage = (Stage) console.getScene().getWindow();
@@ -115,6 +146,4 @@ public class MainController {
         } catch (Exception e) {
         }
     }
-
-    //TODO Documentation
 }

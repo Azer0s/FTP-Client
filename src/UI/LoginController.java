@@ -14,7 +14,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
- * This class is the controller for the login UI.
+ * This is the controller for the login UI.
  *
  * @author Ariel
  */
@@ -37,6 +37,7 @@ public class LoginController {
 
     /**
      * Method loads as soon as the FXML file is done loading.
+     * <p>
      * The method sets EventHandler for the main GUI components to scan if
      * the user presses the enter key and then log in.
      */
