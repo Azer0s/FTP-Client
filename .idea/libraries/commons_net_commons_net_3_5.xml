@@ -4,6 +4,7 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/commons-net-3.5.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-net-3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-net-3.5.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

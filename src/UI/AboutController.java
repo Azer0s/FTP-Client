@@ -5,16 +5,19 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
- * Created by ariel on 31.05.2016.
+ * This class is the controller for the about UI.
+ *
+ * @author Ariel
  */
 public class AboutController {
     @FXML
     Button close;
 
+    /**
+     * Closes the about window.
+     */
     public void close (){
         Stage stage = (Stage) close.getScene().getWindow();
         stage.close();
     }
-
-    //TODO Documentation
 }

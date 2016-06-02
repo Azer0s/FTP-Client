@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 /**
  * A simple frame which outputs the welcome message from the FTP server
- * @author ariel
+ * @author Ariel
  */
 public class UIMsg extends Application {
     private String msg;

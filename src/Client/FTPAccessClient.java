@@ -9,8 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- * Class which connects to the FTP server via the apache commons.
- * @author ariel
+ * Class connects to the FTP server via the apache commons.
+ * @author Ariel
  */
 public class FTPAccessClient extends Thread{
 

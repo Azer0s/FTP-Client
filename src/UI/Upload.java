@@ -9,7 +9,7 @@ import java.io.IOException;
 
 /**
  * Thread to upload a file from the computer to the working directory of the server.
- * @author ariel
+ * @author Ariel
  */
 public class Upload extends Thread {
 

@@ -14,7 +14,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
- * Created by ariel on 31.05.2016.
+ * This class is the controller for the login UI.
+ *
+ * @author Ariel
  */
 public class LoginController {
     @FXML
@@ -32,6 +34,12 @@ public class LoginController {
     @FXML
     Button loginBTN;
 
+
+    /**
+     * Method loads as soon as the FXML file is done loading.
+     * The method sets EventHandler for the main GUI components to scan if
+     * the user presses the enter key and then log in.
+     */
     @FXML
     protected void initialize(){
         String add = UILogin.getInstance().getServer();
@@ -76,6 +84,11 @@ public class LoginController {
         });
     }
 
+    /**
+     * Tries to connect and log into the server.
+     * <p>
+     * If it fails, the method prints a message on the status textfield.
+     */
     public void login(){
         if (address != null && !address.getText().equals("") && !address.getText().equals(null)){
             FTPAccessClient ftpAccessClient = new FTPAccessClient(address.getText(), username.getText(), password.getText());
@@ -103,9 +116,10 @@ public class LoginController {
         }
     }
 
+    /**
+     * Exits the program.
+     */
     public void close(){
         System.exit(0);
     }
-
-    //TODO Documentation
 }

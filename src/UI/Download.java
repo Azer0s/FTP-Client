@@ -7,7 +7,7 @@ import java.io.IOException;
 
 /**
  * Thread to download a file from the server to a directory on the computer.
- * @author ariel
+ * @author Ariel
  */
 public class Download extends Thread {
 
