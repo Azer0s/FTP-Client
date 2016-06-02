@@ -4,16 +4,17 @@
   <OriginalElement>UI</OriginalElement>
   <nodes>
     <node x="360.49999999999994" y="536.0">UI.Download</node>
-    <node x="-498.8791714614499" y="29.512082853855">org.apache.commons.net.ftp</node>
+    <node x="-506.6794692774658" y="31.740739372716668">org.apache.commons.net.ftp</node>
     <node x="41.5" y="744.0">UI.UIMain</node>
-    <node x="252.49999999999994" y="214.0">UI.MainController</node>
     <node x="0.0" y="958.0">UI.LoginController</node>
     <node x="366.0" y="744.0">UI.MsgController</node>
-    <node x="343.99999999999994" y="0.0">UI.UILogin</node>
     <node x="605.0" y="11.0">UI.UIMsg</node>
-    <node x="-653.0786753401733" y="234.73233004806488">Client.FTPAccessClient</node>
     <node x="576.0" y="744.0">UI.AboutController</node>
     <node x="0.0" y="0.5">UI.Upload</node>
+    <node x="252.49999999999994" y="214.0">UI.MainController</node>
+    <node x="377.3522388059698" y="-162.28656716417908">Main.Main</node>
+    <node x="343.99999999999994" y="0.0">UI.UILogin</node>
+    <node x="-653.0786753401733" y="234.73233004806488">Client.FTPAccessClient</node>
     <node x="839.0" y="56.5">UI.UIAbout</node>
   </nodes>
   <notes />
@@ -40,7 +41,7 @@
     </edge>
     <edge source="org.apache.commons.net.ftp" target="org.apache.commons.net.ftp">
       <point x="0.0" y="0.0" />
-      <point x="-451.8791714614499" y="5.012082853854999" />
+      <point x="-459.6794692774658" y="7.240739372716668" />
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="UI.MainController" target="UI.Upload">
@@ -52,6 +53,10 @@
       <point x="0.0" y="0.0" />
     </edge>
     <edge source="UI.LoginController" target="UI.UIMain">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Main.Main" target="UI.UILogin">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
@@ -80,7 +85,7 @@
       <point x="0.0" y="0.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.3565375302663438" x="162.0" y="582.0" />
+  <settings layout="Hierarchic Group" zoom="0.4974016332590943" x="162.0" y="500.5" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
