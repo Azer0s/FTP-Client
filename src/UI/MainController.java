@@ -76,7 +76,7 @@ public class MainController {
     }
 
     /**
-     * Method tells the FTPAccesClient to download the selected file.
+     * Method creates a Download object (new thread) to download the selected file.
      */
     public void download(){
         String selected;
@@ -121,7 +121,7 @@ public class MainController {
     }
 
     /**
-     * Method tells FTPAccesClient to Upload the file which was
+     * Method creates a Upload object (new thread) to upload the file which was
      * selected through the FileChooser.
      */
     public void upload(){
