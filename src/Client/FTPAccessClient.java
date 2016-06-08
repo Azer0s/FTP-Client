@@ -139,6 +139,7 @@ public class FTPAccessClient extends Thread{
      */
     public ArrayList<String> getFS(){
         ArrayList<String> filesAsString = new ArrayList<>();
+        ArrayList<String> dir = new ArrayList<>();
 
         FTPFile[] files = getFTPFile();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -147,10 +148,13 @@ public class FTPAccessClient extends Thread{
             String details = file.getName();
             if (!file.isDirectory()){
                 filesAsString.add(details);
+            }else {
+                dir.add("[" + details + "]");
             }
         }
 
-        return filesAsString;
+        dir.addAll(filesAsString);
+        return dir;
     }
 
     /**

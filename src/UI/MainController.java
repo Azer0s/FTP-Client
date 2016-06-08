@@ -49,7 +49,7 @@ public class MainController {
      * Method loads as soon as the FXML file is done loading.
      * <p>
      * The method gets the FTPAccesClient object from the UIMain instance,
-     * gets all files, pastes them into the ListView and creates the server-msg
+     * gets all files and directories, pastes them into the ListView and creates the server-msg
      * pop-up.
      */
     @FXML
