@@ -107,7 +107,9 @@ public class MainController {
             ArrayList<String> items = ftpAccessClient.getFS();
             list.setItems(FXCollections.observableArrayList(items));
         }else {
-            list.setItems(FXCollections.observableList(ftpAccessClient.getFSFromDir(currentDir)));
+            ArrayList<String> items = ftpAccessClient.getFSFromDir(currentDir);
+            items.add("---");
+            list.setItems(FXCollections.observableList(items));
         }
         System.out.println(list.getItems().toString());
     }
