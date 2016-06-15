@@ -238,7 +238,7 @@ public class FTPAccessClient extends Thread{
      *
      * @param fn            Filename on the server
      * @return              boolean
-     * @throws IOException  If file wasnt found
+     * @throws IOException  If stream couldnt be initialized
      */
     public boolean fileExists(String fn) throws IOException {
         InputStream inputStream = ftp.retrieveFileStream(fn);
