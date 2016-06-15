@@ -145,10 +145,10 @@ public class MainController {
             selected = list.getSelectionModel().getSelectedItem();
         }catch (Exception e){return;}
 
-        boolean deleted = ftpAccessClient.delete(selected);
+        boolean deleted = ftpAccessClient.delete("/" + currentDir + selected);
         if (deleted) {
             try {
-                if(ftpAccessClient.fileExists(selected)){
+                if(ftpAccessClient.fileExists("/" + currentDir + selected)){
                     console.setText("Could not delete the file.");
                     return;
                 }
@@ -171,7 +171,7 @@ public class MainController {
 
         String path = file.getAbsolutePath().replace("\\", "/");
 
-        Upload upload = new Upload(ftpAccessClient, path ,file, this);
+        Upload upload = new Upload(ftpAccessClient, path, currentDir ,file, this);
         upload.start();
     }
 

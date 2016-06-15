@@ -14,6 +14,7 @@ import java.io.IOException;
 public class Upload extends Thread {
 
     private final String PATH;
+    private final String REMOTEPATH;
     private FTPAccessClient ftpAccessClient;
     private MainController mainController;
     private File store;
@@ -28,9 +29,10 @@ public class Upload extends Thread {
      * @param store             File to upload
      * @param mainController    Reference to mainController/main window
      */
-    public Upload(FTPAccessClient ftpAccessClient, String path, File store, MainController mainController){
+    public Upload(FTPAccessClient ftpAccessClient, String path, String remotepath, File store, MainController mainController){
         this.ftpAccessClient = ftpAccessClient;
         this.PATH = path;
+        this.REMOTEPATH = remotepath;
         this.store = store;
         this.mainController = mainController;
     }
@@ -50,8 +52,7 @@ public class Upload extends Thread {
             mainController.console.setText("Upload failed!" + "\t");
         }
         try {
-            ftpAccessClient.getFtp().storeFile(store.getName(), fis);
-            System.out.println(store.getName());
+            ftpAccessClient.getFtp().storeFile("/" + REMOTEPATH + store.getName(), fis);
         } catch (IOException e) {
             mainController.console.setText("Upload failed!" + "\t");
         }finally {
@@ -65,7 +66,7 @@ public class Upload extends Thread {
         }
 
         try {
-            if (!ftpAccessClient.fileExists(store.getName())){
+            if (!ftpAccessClient.fileExists("/" + REMOTEPATH + store.getName())){
                 mainController.console.setText("Upload failed!" + "\t");
                 return;
             }
