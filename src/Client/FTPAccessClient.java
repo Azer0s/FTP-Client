@@ -85,7 +85,7 @@ public class FTPAccessClient extends Thread{
             boolean succes = false;
             try {
                 succes = ftp.login(USERNAME, PASSWORD);
-            } catch (IOException e) {}
+            } catch (IOException ignored) {}
             if (succes){
                 return "true";
             }
@@ -95,7 +95,7 @@ public class FTPAccessClient extends Thread{
 
         try {
             ftp.logout();
-        } catch (IOException e) {}
+        } catch (IOException ignored) {}
         return "false";
     }
 
@@ -125,7 +125,7 @@ public class FTPAccessClient extends Thread{
     public FTPFile[] getFTPFile(){
         try {
             return ftp.listFiles();
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
         return new FTPFile[0];
     }
@@ -149,7 +149,7 @@ public class FTPAccessClient extends Thread{
             if (!file.isDirectory()){
                 filesAsString.add(details);
             }else {
-                dir.add("[" + details + "]");
+                dir.add(details + "/");
             }
         }
 
