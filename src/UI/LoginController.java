@@ -1,7 +1,6 @@
 package UI;
 
 import Client.FTPAccessClient;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,7 +8,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -110,7 +108,7 @@ public class LoginController {
                 UIMain uiMain = new UIMain(ftpAccessClient,ftpAccessClient.loginText(answer));
                 try {
                     uiMain.start(new Stage());
-                } catch (Exception e) {}
+                } catch (Exception ignored) {}
             }
         }else {
             status.setText("Invalid input!");
