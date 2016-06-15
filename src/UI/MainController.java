@@ -126,8 +126,12 @@ public class MainController {
 
         String path = selectedDirectory.getPath() + "/" + selected;
         path = path.replace("\\", "/");
-        Download dl = new Download(currentDir + selected, ftpAccessClient, path, this);
-        dl.start();
+        if (!(selected.equals("---"))){
+            Download dl = new Download(currentDir + selected, ftpAccessClient, path, this);
+            dl.start();
+        }else {
+            console.setText("Not a file");
+        }
     }
 
     /**
