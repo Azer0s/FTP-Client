@@ -3,15 +3,13 @@ package UI;
 import Client.FTPAccessClient;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 
 /**
@@ -21,6 +19,7 @@ import java.io.IOException;
  */
 public class MainController {
     private FTPAccessClient ftpAccessClient;
+    private String currentDir = "";
 
     @FXML
     ListView<String> list;
@@ -42,27 +41,60 @@ public class MainController {
         UIAbout uiAbout = new UIAbout();
         try {
             uiAbout.start(new Stage());
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
     }
 
     /**
      * Method loads as soon as the FXML file is done loading.
      * <p>
      * The method gets the FTPAccesClient object from the UIMain instance,
-     * gets all files, pastes them into the ListView and creates the server-msg
+     * gets all files and directories, pastes them into the ListView and creates the server-msg
      * pop-up.
      */
     @FXML
     protected void initialize(){
         ftpAccessClient = UIMain.getInstance().getFtpAccessClient();
         list.setItems(FXCollections.observableList(ftpAccessClient.getFS()));
+        list.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (isDir(newValue)){
+                ArrayList<String> filesFromDir = ftpAccessClient.getFSFromDir(currentDir + newValue);
+                currentDir = currentDir + newValue;
+                System.out.println(currentDir);
+                System.out.println(filesFromDir);
+                filesFromDir.add("---");
+                list.setItems(FXCollections.observableList(filesFromDir));
+                list.getSelectionModel().select(list.getItems().size()-1);
+                list.getFocusModel().focus(list.getItems().size()-1);
+                list.scrollTo(0);
+            }
+            if (Objects.equals(newValue, "..")){
+                String[] dirs = currentDir.split("/");
+                currentDir = "";
+                for (int i = 0; i < dirs.length-1; i++){
+                    currentDir = currentDir + dirs[i] + "/";
+                }
+                System.out.println(currentDir);
+                if (Objects.equals(currentDir, "")){
+                    init();
+                }else {
+                    ArrayList<String> filesFromDir = ftpAccessClient.getFSFromDir(currentDir);
+                    System.out.println(filesFromDir);
+                    filesFromDir.add("---");
+                    list.setItems(FXCollections.observableList(filesFromDir));
+                    list.getSelectionModel().select(list.getItems().size()-1);
+                    list.getFocusModel().focus(list.getItems().size()-1);
+                    list.scrollTo(0);
+                }
+            }
+        });
+
         console.setText(UIMain.getInstance().getMsg()+ "\t");
         System.out.println(list.getItems().toString());
 
         UIMsg uiMsg = new UIMsg(ftpAccessClient.msg);
         try {
             uiMsg.start(new Stage());
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
@@ -71,7 +103,12 @@ public class MainController {
      */
     public void init(){
         ftpAccessClient = UIMain.getInstance().getFtpAccessClient();
-        list.setItems(FXCollections.observableList(ftpAccessClient.getFS()));
+        if (currentDir.equals("")){
+            ArrayList<String> items = ftpAccessClient.getFS();
+            list.setItems(FXCollections.observableArrayList(items));
+        }else {
+            list.setItems(FXCollections.observableList(ftpAccessClient.getFSFromDir(currentDir)));
+        }
         System.out.println(list.getItems().toString());
     }
 
@@ -80,7 +117,6 @@ public class MainController {
      */
     public void download(){
         String selected;
-        FileOutputStream fos = null;
         try {
             selected = list.getSelectionModel().getSelectedItem();
         }catch (Exception e){return;}
@@ -90,8 +126,7 @@ public class MainController {
 
         String path = selectedDirectory.getPath() + "/" + selected;
         path = path.replace("\\", "/");
-
-        Download dl = new Download(selected, ftpAccessClient, path, this);
+        Download dl = new Download(currentDir + selected, ftpAccessClient, path, this);
         dl.start();
     }
 
@@ -111,7 +146,7 @@ public class MainController {
                     console.setText("Could not delete the file.");
                     return;
                 }
-            } catch (IOException e) {
+            } catch (IOException ignored) {
             }
             console.setText("The file was deleted successfully.");
             init();
@@ -130,7 +165,7 @@ public class MainController {
 
         String path = file.getAbsolutePath().replace("\\", "/");
 
-        Upload upload = new Upload(ftpAccessClient, path,file, this);
+        Upload upload = new Upload(ftpAccessClient, path ,file, this);
         upload.start();
     }
 
@@ -143,7 +178,18 @@ public class MainController {
         stage.close();
         try {
             uiLogin.start(new Stage());
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
+    }
+
+    /**
+     * Checks if the selected ListView item is a directory (if the item has a "/" at the end).
+     * Returns true if the selected item is a directory, false if not.
+     *
+     * @param name Name of the selected item in the ListView
+     * @return boolean
+     */
+    private boolean isDir(String name){
+        return Objects.equals(name.substring(name.length() - 1), "/");
     }
 }

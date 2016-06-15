@@ -50,7 +50,9 @@ public class Upload extends Thread {
             mainController.console.setText("Upload failed!" + "\t");
         }
         try {
+            //TODO upload to remote path
             ftpAccessClient.getFtp().storeFile(store.getName(), fis);
+            System.out.println(store.getName());
         } catch (IOException e) {
             mainController.console.setText("Upload failed!" + "\t");
         }finally {
@@ -68,7 +70,7 @@ public class Upload extends Thread {
                 mainController.console.setText("Upload failed!" + "\t");
                 return;
             }
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
 
         mainController.console.setText("Upload succesful!" + "\t");

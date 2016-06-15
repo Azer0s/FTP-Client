@@ -1,11 +1,12 @@
 package Client;
 
-import org.apache.commons.net.ftp.*;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPClientConfig;
+import org.apache.commons.net.ftp.FTPFile;
+import org.apache.commons.net.ftp.FTPReply;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -85,7 +86,7 @@ public class FTPAccessClient extends Thread{
             boolean succes = false;
             try {
                 succes = ftp.login(USERNAME, PASSWORD);
-            } catch (IOException e) {}
+            } catch (IOException ignored) {}
             if (succes){
                 return "true";
             }
@@ -95,7 +96,7 @@ public class FTPAccessClient extends Thread{
 
         try {
             ftp.logout();
-        } catch (IOException e) {}
+        } catch (IOException ignored) {}
         return "false";
     }
 
@@ -122,10 +123,10 @@ public class FTPAccessClient extends Thread{
      *
      * @return FTPFile
      */
-    public FTPFile[] getFTPFile(){
+    private FTPFile[] getFTPFile(){
         try {
             return ftp.listFiles();
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
         return new FTPFile[0];
     }
@@ -138,19 +139,58 @@ public class FTPAccessClient extends Thread{
      * @return ArrayList
      */
     public ArrayList<String> getFS(){
-        ArrayList<String> filesAsString = new ArrayList<>();
-
         FTPFile[] files = getFTPFile();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return convertToArrayList(files);
+    }
 
+    /**
+     * Gets all available files from a specific directory and returns them as a FTPFile array.
+     *
+     * @return FTPFile
+     */
+    private FTPFile[] getFTPFileFromDir(String dir){
+        try {
+            return ftp.listFiles(dir);
+        } catch (IOException ignored) {
+        }
+        return new FTPFile[0];
+    }
+
+    /**
+     * Outputs filenames as ArrayList
+     * <p>
+     * Gets FTPFile array from getFTPFileFromDir(), gets filenames from said array and puts it into the ArrayList.
+     *
+     * @param directory The directory from which you want to know all available files
+     * @return ArrayList
+     */
+    public ArrayList<String> getFSFromDir(String directory){
+        FTPFile[] files = getFTPFileFromDir(directory);
+        ArrayList<String> returnList = new ArrayList<>();
+        returnList.add("..");
+        returnList.addAll(convertToArrayList(files));
+        return returnList;
+    }
+
+    /**
+     * Converts a FTPFile Array into a String ArrayList
+     *
+     * @param files FTPFile Array from the FTP Server (all available files)
+     * @return  ArrayList
+     */
+    private ArrayList<String> convertToArrayList(FTPFile[] files){
+        ArrayList<String> filesAsString = new ArrayList<>();
+        ArrayList<String> dir = new ArrayList<>();
         for (FTPFile file: files) {
             String details = file.getName();
             if (!file.isDirectory()){
                 filesAsString.add(details);
+            }else {
+                dir.add(details + "/");
             }
         }
-
-        return filesAsString;
+        dir.addAll(filesAsString);
+        return dir;
     }
 
     /**
@@ -204,10 +244,7 @@ public class FTPAccessClient extends Thread{
         InputStream inputStream = ftp.retrieveFileStream(fn);
         int returnCode = ftp.getReplyCode();
 
-        if (inputStream == null || returnCode == 550){
-            return false;
-        }
+        return !(inputStream == null || returnCode == 550);
 
-        return true;
     }
 }
