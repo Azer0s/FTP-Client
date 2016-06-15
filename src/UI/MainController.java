@@ -103,7 +103,12 @@ public class MainController {
      */
     public void init(){
         ftpAccessClient = UIMain.getInstance().getFtpAccessClient();
-        list.setItems(FXCollections.observableList(ftpAccessClient.getFS()));
+        if (currentDir.equals("")){
+            ArrayList<String> items = ftpAccessClient.getFS();
+            list.setItems(FXCollections.observableArrayList(items));
+        }else {
+            list.setItems(FXCollections.observableList(ftpAccessClient.getFSFromDir(currentDir)));
+        }
         System.out.println(list.getItems().toString());
     }
 
@@ -160,7 +165,7 @@ public class MainController {
 
         String path = file.getAbsolutePath().replace("\\", "/");
 
-        Upload upload = new Upload(ftpAccessClient, path, "/" + currentDir,file, this);
+        Upload upload = new Upload(ftpAccessClient, path ,file, this);
         upload.start();
     }
 
