@@ -146,6 +146,7 @@ public class FTPAccessClient extends Thread{
     /**
      * Gets all available files from a specific directory and returns them as a FTPFile array.
      *
+     * @param dir   The directory from which you want to know all available files
      * @return FTPFile
      */
     private FTPFile[] getFTPFileFromDir(String dir){
